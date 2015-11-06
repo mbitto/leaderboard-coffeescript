@@ -61,7 +61,7 @@ class Leaderboard
     if @redisConnection?
       delete redisOptions['redis_connection']
 
-    @redisConnection = redis.createClient(redisOptions['port'], redisOptions['host']) unless @redisConnection?
+    @redisConnection = redis.createClient(redisOptions['port'], redisOptions['host'], {auth_pass: redisOptions.auth_pass}) unless @redisConnection?
 
   ###
   # Disconnect the Redis connection.
